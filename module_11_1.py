@@ -13,12 +13,12 @@ with open('song.mp3', 'wb') as f:
 
 from PIL import Image
 
-image = Image.open('картинка.png')
 new_size = (100, 100)
+with Image.open('картинка.png') as image:
+    resized_image = image.resize(new_size)
+    resized_image.save('resized_картинка.png')
 
-resized_image = image.resize(new_size)
-resized_image.save('resized_картинка.png')
-
-image_2 = Image.open('resized_картинка.png')
-blackAndWhite = image_2.convert('L')
+with Image.open('resized_картинка.png') as image_2:
+    blackAndWhite = image_2.convert('L')
+    blackAndWhite.save('bw_resized_картинка.png')
 blackAndWhite.save('bw_resized_картинка.png')
